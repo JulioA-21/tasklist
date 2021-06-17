@@ -1,0 +1,34 @@
+<odoo>
+  <record id="view_tree_tasks" model="ir.ui.view">
+    <field name="name">view.tree.tasks</field>
+    <field name="model">task.list</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="status"/>
+      </tree>
+    </field>
+  </record>
+  <record id="view_form_tasks" model="ir.ui.view">
+    <field name="name">view.form.tasks</field>
+    <field name="model">task.list</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name" string="Descripcion"/>
+            <field name="status" string="Estado"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_view_tasklist" model="ir.actions.act_window">
+    <field name="name">Lista de Tareas</field>
+    <field name="res_model">task.list</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem id="tasklist.menu_tasklist" parent="" action="action_view_tasklist"/>
+</odoo>
