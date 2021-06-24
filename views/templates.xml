@@ -10,6 +10,7 @@
       </tree>
     </field>
   </record>
+
   <record id="view_form_tasks" model="ir.ui.view">
     <field name="name">view.form.tasks</field>
     <field name="model">task.list</field>
@@ -25,10 +26,28 @@
     </field>
   </record>
 
+  <record id="task_view_kanban" model="ir.ui.view">
+    <field name="name">view.kanban.task</field>
+    <field name="model">task.list</field>
+    <field name="arch" type="xml">
+      <kanban>
+        <field name="name"/>
+        <field name="status"/>
+        <templates>
+          <t t-name="kanban-box">
+          <div class="oe_kanban_global_click">
+            <field name="name" />
+          </div>
+          </t>
+        </templates>
+      </kanban>
+    </field>
+  </record>
+
   <record id="action_view_tasklist" model="ir.actions.act_window">
     <field name="name">Lista de Tareas</field>
     <field name="res_model">task.list</field>
-    <field name="view_mode">tree,form</field>
+    <field name="view_mode">tree,form,kanban</field>
   </record>
 
   <menuitem id="tasklist.menu_tasklist" parent="" action="action_view_tasklist"/>
@@ -42,7 +61,7 @@
           <field name="status_ids" />
         </group>
         <footer>
-          <button name="update_status" context="{'open_invoices': True}" string="Update Status" type="object"  class="btn-primary"/>
+          <button name="update_status" context="{'open_invoices': True}" string="Update Status" type="object" class="btn-primary"/>
           <button string="Cancel" class="btn-condary" special="cancel"/>
         </footer>
       </form>
