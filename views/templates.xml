@@ -6,6 +6,7 @@
       <tree>
         <field name="name"/>
         <field name="status"/>
+        <button string="Marcar como Hecho" name="action_btn_done" type="object" class="oe_highlight"/>
       </tree>
     </field>
   </record>
@@ -31,4 +32,22 @@
   </record>
 
   <menuitem id="tasklist.menu_tasklist" parent="" action="action_view_tasklist"/>
+
+  <record id="view_tasklist" model="ir.ui.view">
+    <field name="name">wizard.tasklist</field>
+    <field name="model">tasklist.odoo</field>
+    <field name="arch" type="xml">
+      <form string="Edicion Masiva">
+        <group>
+          <field name="status_ids" />
+        </group>
+        <footer>
+          <button name="update_status" context="{'open_invoices': True}" string="Update Status" type="object"  class="btn-primary"/>
+          <button string="Cancel" class="btn-condary" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <act_window id="launch_session_wizard" name="Edicion Masiva" binding_model="task.list" res_model="tasklist.odoo" view_mode="form" target="new"/>
 </odoo>
