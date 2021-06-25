@@ -16,10 +16,16 @@
     <field name="model">task.list</field>
     <field name="arch" type="xml">
       <form>
+        <header>
+          <button string="Marcar como Hecho" name="action_btn_done" type="object" class="oe_highlight"/>
+          <field name="status" widget="statusbar" statusbar_visible="Borrador,Hecho,Pediente"/>
+        </header>
         <sheet>
           <group>
-            <field name="name" string="Descripcion"/>
-            <field name="status" string="Estado"/>
+            <field name="name" string="Description"/>
+            <field name="status" string="Status"/>
+            <field name="in_charge_id" string="In Charge"/>
+            
           </group>
         </sheet>
       </form>
@@ -35,9 +41,9 @@
         <field name="status"/>
         <templates>
           <t t-name="kanban-box">
-          <div class="oe_kanban_global_click">
-            <field name="name" />
-          </div>
+            <div class="oe_kanban_global_click">
+              <field name="name" />
+            </div>
           </t>
         </templates>
       </kanban>
@@ -67,6 +73,9 @@
       </form>
     </field>
   </record>
+  
+  
+
 
   <act_window id="launch_session_wizard" name="Edicion Masiva" binding_model="task.list" res_model="tasklist.odoo" view_mode="form" target="new"/>
 </odoo>

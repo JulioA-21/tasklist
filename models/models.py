@@ -7,3 +7,4 @@ class tasklist(models.Model):
           self.status = 'hecho'
      name = fields.Char("Nombre")
      status  = fields.Selection([('borrador', 'Borrador'),('hecho', 'Hecho'),('pendiente', 'Pendiente')])
+     in_charge_id = fields.Many2one('hr.employee',string='A cargo')
