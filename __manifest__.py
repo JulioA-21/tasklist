@@ -24,7 +24,7 @@
 
     # always loaded
     'data': [
-       'views/templates.xml',
+       'wizard/task_list_wizard_view.xml',
        'security/security.xml',
     ],
 }
